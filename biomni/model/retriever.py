@@ -78,7 +78,7 @@ IMPORTANT GUIDELINES:
         else:
             # For other LLM interfaces
             response_content = str(llm(prompt))
-
+        print(f"Response content: {response_content}")
         # Parse the response to extract the selected indices
         selected_indices = self._parse_llm_response(response_content)
 
