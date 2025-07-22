@@ -20,6 +20,7 @@ def get_llm(
     source: SourceType | None = None,
     base_url: str | None = None,
     api_key: str = "EMPTY",
+    custom_model_name: str = "",
 ) -> BaseChatModel:
     """
     Get a language model instance based on the specified model name and source.
