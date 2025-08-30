@@ -169,6 +169,8 @@ celerybeat.pid
 
 # Environments
 .env
+.env.local
+.env.*.local
 .venv
 env/
 venv/
@@ -176,6 +178,27 @@ ENV/
 env.bak/
 venv.bak/
 .envrc
+
+# API Keys and Secrets - CRITICAL SECURITY
+*.key
+*.pem
+*.p12
+*.pfx
+*secret*
+*credential*
+*api_key*
+config.json
+secrets.json
+
+# Environment templates (keep these for documentation)  
+!env_local_template.txt
+!*template.env
+!*.env.example
+
+# Test results and logs that might contain sensitive data
+test_results/
+nohup.out
+output*.log
 
 # Spyder project settings
 .spyderproject

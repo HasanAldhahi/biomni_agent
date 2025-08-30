@@ -14,13 +14,25 @@ echo "Start time: $(date)"
 echo ""
 
 
-export CUSTOM_MODEL_BASE_URL="https://chat-ai.academiccloud.de/v1"
-export CUSTOM_MODEL_API_KEY="YOUR_API_KEY_HERE"  
+# Load environment variables from .env.local if it exists
+if [ -f "../../.env.local" ]; then
+    echo "Loading environment variables from .env.local..."
+    export $(grep -v '^#' ../../.env.local | xargs)
+    echo "Environment variables loaded."
+else
+    echo "Warning: .env.local not found. Please create it with your API keys."
+    echo "Copy ../../env_local_template.txt to ../../.env.local and update the values."
+fi
+
+# Set default values if not provided (these will fail gracefully)
+export CUSTOM_MODEL_BASE_URL="${CUSTOM_MODEL_BASE_URL:-https://chat-ai.academiccloud.de/v1}"
+export CUSTOM_MODEL_API_KEY="${CUSTOM_MODEL_API_KEY:-YOUR_API_KEY_HERE}"
 
 # Check if required environment variables are set
-if [ -z "$CUSTOM_MODEL_BASE_URL" ] || [ -z "$CUSTOM_MODEL_API_KEY" ]; then
-    echo "Warning: CUSTOM_MODEL_BASE_URL or CUSTOM_MODEL_API_KEY not set"
+if [ "$CUSTOM_MODEL_API_KEY" = "YOUR_API_KEY_HERE" ] || [ -z "$CUSTOM_MODEL_BASE_URL" ] || [ -z "$CUSTOM_MODEL_API_KEY" ]; then
+    echo "⚠️  Warning: CUSTOM_MODEL_BASE_URL or CUSTOM_MODEL_API_KEY not properly set"
     echo "Custom models may fail without these environment variables"
+    echo "Please set them in ../../.env.local file"
     echo ""
 fi
 
