@@ -153,7 +153,7 @@ def query_pubmed(query: str, max_papers: int = 10, max_retries: int = 3) -> str:
     from pymed import PubMed
 
     try:
-        pubmed = PubMed(tool="MyTool", email="your-email@example.com")  # Update with a valid email address
+        pubmed = PubMed(tool="MyTool", email="hassanshka@gmail.com")  # Update with a valid email address
 
         # Initial attempt
         papers = list(pubmed.query(query, max_results=max_papers))

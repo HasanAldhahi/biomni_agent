@@ -10,6 +10,10 @@ from langchain_core.messages import AIMessage, BaseMessage, HumanMessage, System
 from langchain_core.prompts import ChatPromptTemplate
 from langgraph.checkpoint.memory import MemorySaver
 from langgraph.graph import END, START, StateGraph
+from IPython.display import Image, display
+
+import matplotlib.pyplot as plt
+
 
 from biomni.env_desc import data_lake_dict, library_content_dict
 from biomni.llm import get_llm
@@ -115,6 +119,34 @@ class A1:
         # Add timeout parameter
         self.timeout_seconds = timeout_seconds  # 10 minutes default timeout
         self.configure()
+
+    def count_tokens(self, text):
+        """Simple token counting approximation (roughly 4 characters = 1 token)."""
+        if isinstance(text, str):
+            return len(text) // 4
+        return 0
+    
+    def print_token_info(self, messages, stage=""):
+        """Print token information for debugging."""
+        system_tokens = 0
+        user_tokens = 0
+        total_tokens = 0
+        
+        for msg in messages:
+            content = msg.content if hasattr(msg, 'content') else str(msg)
+            tokens = self.count_tokens(content)
+            total_tokens += tokens
+            
+            if isinstance(msg, SystemMessage):
+                system_tokens += tokens
+            elif isinstance(msg, HumanMessage):
+                user_tokens += tokens
+        
+        print(f"\n=== TOKEN TRACKING {stage} ===")
+        print(f"System prompt tokens: {system_tokens:,}")
+        print(f"User messages tokens: {user_tokens:,}")
+        print(f"Total input tokens: {total_tokens:,}")
+        print(f"================================\n")
 
     def add_tool(self, api):
         """Add a new tool to the agent's tool registry and make it available for retrieval.
@@ -957,10 +989,21 @@ Each library is listed with its description to help you understand its functiona
             custom_data=custom_data if custom_data else None,
             custom_software=custom_software if custom_software else None,
         )
+        
+        # Track system prompt size
+        system_prompt_tokens = self.count_tokens(self.system_prompt)
+        print(f"\n=== SYSTEM PROMPT GENERATED (INITIAL) ===")
+        print(f"System prompt length: {len(self.system_prompt):,} characters")
+        print(f"Estimated tokens: {system_prompt_tokens:,}")
+        print(f"=========================================\n")
 
         # Define the nodes
         def generate(state: AgentState) -> AgentState:
             messages = [SystemMessage(content=self.system_prompt)] + state["messages"]
+            
+            # Track and print token usage before sending to LLM
+            self.print_token_info(messages, "BEFORE LLM INVOKE")
+            
             response = self.llm.invoke(messages)
 
             # Parse the response
@@ -1158,7 +1201,11 @@ Each library is listed with its description to help you understand its functiona
         self.app = workflow.compile()
         self.checkpointer = MemorySaver()
         self.app.checkpointer = self.checkpointer
-        # display(Image(self.app.get_graph().draw_mermaid_png()))
+        
+        graph_png = self.app.get_graph().draw_mermaid_png()
+        with open('workflow_graph_a1_original.png', 'wb') as f:
+            f.write(graph_png)
+        # display(Image(graph_png))
 
     def go(self, prompt):
         """Execute the agent with the given prompt.
@@ -1349,6 +1396,13 @@ Each library is listed with its description to help you understand its functiona
             custom_data=custom_data if custom_data else None,
             custom_software=custom_software if custom_software else None,
         )
+        
+        # Track system prompt size after retrieval
+        system_prompt_tokens = self.count_tokens(self.system_prompt)
+        print(f"\n=== SYSTEM PROMPT UPDATED (AFTER RETRIEVAL) ===")
+        print(f"System prompt length: {len(self.system_prompt):,} characters")
+        print(f"Estimated tokens: {system_prompt_tokens:,}")
+        print(f"===============================================\n")
 
         # Print the raw system prompt for debugging
         # print("\n" + "="*20 + " RAW SYSTEM PROMPT FROM AGENT " + "="*20)

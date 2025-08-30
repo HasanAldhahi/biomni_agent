@@ -96,7 +96,7 @@ def get_llm(
         # Custom LLM serving such as SGLang. Must expose an openai compatible API.
         assert base_url is not None, "base_url must be provided for customly served LLMs"
         llm = ChatOpenAI(
-            model=model,
+            model=custom_model_name,
             temperature=temperature,
             max_tokens=8192,
             stop_sequences=stop_sequences,

@@ -249,7 +249,7 @@ def annotate_plasmid(sequence: str, is_circular: bool = True) -> dict[str, Any]:
         return None
 
 
-def get_gene_coding_sequence(gene_name: str, organism: str, email: str = None) -> list[dict[str, str]]:
+def get_gene_coding_sequence(gene_name: str, organism: str, email: str = "hassanshka@gmail.com") -> list[dict[str, str]]:
     """Retrieves the coding sequence(s) of a specified gene from NCBI Entrez.
 
     Args:

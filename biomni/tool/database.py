@@ -5,12 +5,18 @@ import time
 from typing import Any
 
 import requests
-from anthropic import Anthropic
+
 from Bio.Blast import NCBIWWW, NCBIXML
 from Bio.Seq import Seq
 
-from biomni.utils import parse_hpo_obo
+from anthropic import Anthropic
 
+from biomni.utils import parse_hpo_obo
+from biomni.llm import get_llm
+from langchain_core.messages import SystemMessage, HumanMessage
+from dotenv import load_dotenv
+
+load_dotenv("../../.env")
 
 # Function to map HPO terms to names
 def get_hpo_names(hpo_terms: list[str], data_lake_path: str) -> list[str]:
@@ -49,33 +55,49 @@ def _query_claude_for_api(prompt, schema, system_template, api_key=None, model="
 
     """
     # Get API key
-    api_key = api_key or os.environ.get("ANTHROPIC_API_KEY")
+    # Load environment variables with fallback paths
+    env_paths = ["../../.env", ".env", "../.env"]
+    env_loaded = False
+    for path in env_paths:
+        if os.path.exists(path):
+            load_dotenv(path)
+            env_loaded = True
+            break
+    
+    if not env_loaded:
+        print(f"Warning: No .env file found in paths: {env_paths}")
+    else:
+        print(f"Environment variables loaded from: {env_paths}")
+        
+    api_key =  os.environ.get("CUSTOM_MODEL_API_KEY") 
+    # print(f"API key: {api_key}")
+    base_url = os.environ.get("CUSTOM_MODEL_BASE_URL")
+    custom_model_name = os.environ.get("CUSTOM_MODEL_NAME")
     if api_key is None:
         return {
             "success": False,
-            "error": "No API key provided. Set ANTHROPIC_API_KEY environment variable or provide api_key parameter.",
+            "error": "No API key provided. Set CUSTOM_MODEL_API_KEY environment variable or provide api_key parameter.",
         }
 
     try:
         # Initialize Anthropic client
-        client = Anthropic(api_key=api_key)
-
+        print(f"Base URL: {base_url}")
+        client = get_llm(model = 'custom', base_url=base_url, api_key=api_key, custom_model_name=custom_model_name)
+        print(f"Client: {client}")
         if schema is not None:
             # Format the system prompt with the schema
             schema_json = json.dumps(schema, indent=2)
             system_prompt = system_template.format(schema=schema_json)
         else:
             system_prompt = system_template
-
-        response = client.messages.create(
-            model=model,
-            system=system_prompt,
-            max_tokens=1000,
-            messages=[{"role": "user", "content": prompt}],
-        )
-
+        client = client.bind(max_tokens=1000)
+        response = client.invoke([
+            SystemMessage(content=system_prompt),
+            HumanMessage(content=prompt),
+        ])
+       
         # Parse Claude's response
-        claude_text = response.content[0].text.strip()
+        claude_text = response.content.strip()
 
         # Find JSON boundaries (in case Claude adds explanations)
         json_start = claude_text.find("{")

@@ -13,6 +13,7 @@ from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_core.runnables import RunnableConfig
 from langgraph.graph import END, StateGraph
 from langgraph.graph.message import add_messages
+from IPython.display import Image, display
 
 from biomni.env_desc import data_lake_dict, library_content_dict
 from biomni.llm import get_llm
@@ -38,9 +39,12 @@ class react:
     def __init__(
         self,
         path="./data",
-        llm="claude-3-7-sonnet-latest",
-        use_tool_retriever=False,
+        llm="claude-sonnet-4-20250514",
+        use_tool_retriever=True,
         timeout_seconds=600,
+        base_url: str | None = None,
+        api_key: str = "EMPTY",
+        custom_model_name: str = "",
     ):
         self.path = path
         if not os.path.exists(path):
@@ -52,7 +56,7 @@ class react:
 
         module2api = read_module2api()
 
-        self.llm = get_llm(llm)
+        self.llm = get_llm(llm, base_url=base_url, api_key=api_key, custom_model_name=custom_model_name)
         tools = []
         for module, api_list in module2api.items():
             print("Registering tools from module:", module)
@@ -73,6 +77,8 @@ class react:
 
         # When wrapping tools with timeout
         self.tools = self._add_timeout_to_tools(self.tools)
+        self.prompt = ""
+        self.system_prompt = ""
 
     def _add_timeout_to_tools(self, tools):
         """Apply timeout wrapper to all tool functions using multiprocessing."""
@@ -327,9 +333,14 @@ Here is the list of available libraries with their descriptions:
 
         # Add edge from tools back to agent
         workflow.add_edge("tools", "agent")
+        self.app = workflow.compile()
+        graph_png = self.app.get_graph().draw_mermaid_png()
+        with open('workflow_graph_react.png', 'wb') as f:
+            f.write(graph_png)
+        display(Image(graph_png))
 
         # Compile the graph
-        return workflow.compile()
+        return self.app
 
     def go(self, prompt):
         """Execute the agent with the given prompt.
