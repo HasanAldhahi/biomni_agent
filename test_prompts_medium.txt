@@ -1,0 +1,5 @@
+Perform a multiple sequence alignment of the hemoglobin alpha chain from human, chimpanzee, and mouse.
+Identify all the single nucleotide polymorphisms (SNPs) in the human BRCA1 gene that have been classified as pathogenic in ClinVar.
+Find all the drugs that target the epidermal growth factor receptor (EGFR) and are approved for the treatment of non-small cell lung cancer.
+Perform a gene ontology enrichment analysis on the following list of human genes: EGFR, BRAF, KRAS, PIK3CA.
+Predict the 3D structure of the human protein p53.

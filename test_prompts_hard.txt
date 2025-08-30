@@ -1,0 +1,5 @@
+Given a patient's whole-genome sequencing data and clinical phenotype, identify the most likely causal variant for their rare genetic disease.
+Design a CRISPR-based gene therapy strategy to correct a specific disease-causing mutation in a given gene.
+Develop a multi-omics integration model to predict patient response to a specific cancer immunotherapy.
+From a large-scale proteomics dataset, identify a novel biomarker panel for the early detection of pancreatic cancer.
+Propose a novel drug target for the treatment of Alzheimer's disease based on an integrated analysis of genomic, transcriptomic, and proteomic data.

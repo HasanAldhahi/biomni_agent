@@ -1,0 +1,122 @@
+What is the molecular weight of caffeine?
+Find the amino acid sequence for human insulin.
+What are the known drug targets for Alzheimer's disease?
+List five genes associated with breast cancer.
+What is the function of the TP53 gene?
+Find the PDB ID for the crystal structure of the SARS-CoV-2 spike protein.
+What are the common side effects of metformin?
+List three approved drugs for treating rheumatoid arthritis.
+What is the chemical formula for glucose?
+Find the Entrez Gene ID for the human gene BRCA1.
+What is the mechanism of action of aspirin?
+List the publications by Kexin Huang in 2025.
+What are the substrates for the enzyme lactase?
+Find the official symbol for the gene that causes Huntington's disease.
+What is the half-life of caffeine in the human body?
+List the known protein-protein interactions for the human protein p53.
+What is the genomic location of the human CFTR gene?
+Find the SMILES string for ibuprofen.
+What is the role of mitochondria in the cell?
+List three biomarkers for liver damage.
+What is the difference between a virus and a bacterium?
+Find the full name of the organism with the NCBI Taxonomy ID 9606.
+What is the function of the CRISPR-Cas9 system?
+List the different types of RNA.
+What is the central dogma of molecular biology?
+Find the chemical structure of cholesterol.
+What are the main functions of the immune system?
+List the stages of mitosis.
+What is the difference between DNA and RNA?
+Find the melting temperature of the DNA sequence 'ATGCATGCATGC'.
+What is the role of ATP in the cell?
+List the essential amino acids for humans.
+What is the function of the ribosome?
+Find the accession number for the human reference genome.
+What is the difference between a prokaryotic and a eukaryotic cell?
+List the different blood types in humans.
+What is the function of the cell membrane?
+Find the definition of a gene.
+What is the difference between an antigen and an antibody?
+List the major organs of the human body.
+
+Perform a multiple sequence alignment of the hemoglobin alpha chain from human, chimpanzee, and mouse.
+Identify all the single nucleotide polymorphisms (SNPs) in the human BRCA1 gene that have been classified as pathogenic in ClinVar.
+Find all the drugs that target the epidermal growth factor receptor (EGFR) and are approved for the treatment of non-small cell lung cancer.
+Perform a gene ontology enrichment analysis on the following list of human genes: EGFR, BRAF, KRAS, PIK3CA.
+Predict the 3D structure of the human protein p53.
+Find all the protein-protein interactions between the proteins in the mTOR signaling pathway.
+Identify the transcription factor binding sites in the promoter region of the human MYC gene.
+Design a pair of PCR primers to amplify the first exon of the human TP53 gene.
+Find the expression profile of the gene EGFR across different tissues in the GTEx database.
+Identify all the known post-translational modifications of the human protein p53.
+Perform a virtual screen of a small molecule library against the active site of the enzyme HIV-1 protease.
+Find the metabolic pathway that converts glucose to pyruvate.
+Identify the genes that are differentially expressed between normal and tumor tissue in a given breast cancer dataset.
+Predict the subcellular localization of the human protein mTOR.
+Find the evolutionary conservation of the amino acid sequence of the human protein p53 across different species.
+Identify the microRNAs that are predicted to target the human gene MYC.
+Perform a pathway analysis on a list of differentially expressed genes from a given experiment.
+Find the drug-drug interactions between warfarin and a list of commonly prescribed antibiotics.
+Identify the potential off-target effects of a given CRISPR guide RNA.
+Predict the ADMET (absorption, distribution, metabolism, excretion, and toxicity) properties of a given small molecule.
+Find the genetic variants that are associated with an increased risk of developing type 2 diabetes.
+Identify the cell types that are present in a given single-cell RNA-seq dataset.
+Perform a de novo assembly of a given set of DNA sequencing reads.
+Find the protein domains that are present in the human protein EGFR.
+Identify the signaling pathways that are activated by the binding of epidermal growth factor (EGF) to its receptor (EGFR).
+Perform a phylogenetic analysis of a given set of protein sequences.
+Find the copy number variations (CNVs) in a given cancer genome.
+Identify the epigenetic modifications (e.g., DNA methylation, histone modifications) in the promoter region of a given gene.
+Perform a genome-wide association study (GWAS) on a given dataset of genetic variants and phenotypes.
+Find the three-dimensional structure of a given protein-ligand complex.
+Identify the alternative splicing variants of a given gene.
+Perform a structural alignment of two given protein structures.
+Find the protein-protein interaction network for a given set of proteins.
+Identify the metabolic pathways that are enriched in a given set of metabolites.
+Perform a molecular dynamics simulation of a given protein.
+Find the single-cell ATAC-seq peaks that are associated with a given gene.
+Identify the somatic mutations in a given tumor sample.
+Perform a virtual screen for potential inhibitors of a given enzyme.
+Find the quantitative trait loci (QTLs) for a given trait in a given population.
+Identify the super-enhancers in a given cell type.
+
+Given a patient's whole-genome sequencing data and clinical phenotype, identify the most likely causal variant for their rare genetic disease.
+Design a CRISPR-based gene therapy strategy to correct a specific disease-causing mutation in a given gene.
+Develop a multi-omics integration model to predict patient response to a specific cancer immunotherapy.
+From a large-scale proteomics dataset, identify a novel biomarker panel for the early detection of pancreatic cancer.
+Propose a novel drug target for the treatment of Alzheimer's disease based on an integrated analysis of genomic, transcriptomic, and proteomic data.
+Design a synthetic gene circuit in E. coli to produce a valuable biofuel from a cheap substrate.
+Given a set of single-cell RNA-seq data from a developing organ, reconstruct the developmental trajectory of the different cell lineages.
+From a microbiome dataset, identify the microbial species and metabolic pathways that are associated with a patient's response to a specific diet.
+Develop a machine learning model to predict the binding affinity of a small molecule to a given protein target.
+Design a set of experiments to validate the function of a newly discovered long non-coding RNA.
+Given a set of cryo-EM images, determine the three-dimensional structure of a large protein complex.
+Propose a mechanism of action for a newly discovered drug based on its chemical structure and its effects on gene expression.
+Design a clinical trial to test the efficacy and safety of a new drug for the treatment of a specific disease.
+From a large dataset of electronic health records, identify a new comorbidity associated with a specific disease.
+Develop a computational model to simulate the spread of an infectious disease in a given population.
+Design a high-throughput screen to identify small molecules that can modulate the activity of a specific signaling pathway.
+From a set of Hi-C data, reconstruct the three-dimensional organization of the genome in a given cell type.
+Propose a new classification system for a specific type of cancer based on its molecular subtypes.
+Design a set of experiments to determine the mechanism of drug resistance in a given cancer cell line.
+From a large dataset of protein structures, identify a new allosteric binding site on a given protein target.
+Develop a computational model to predict the effect of a given genetic variant on protein function.
+Design a biosensor to detect the presence of a specific pathogen in a given sample.
+From a set of metabolomics data, identify the metabolic pathways that are altered in a given disease state.
+Propose a new therapeutic strategy for a specific autoimmune disease based on an understanding of the underlying immunopathology.
+Design a set of experiments to determine the role of a specific gut microbe in a given disease.
+From a large dataset of clinical trial data, identify a subpopulation of patients who are most likely to respond to a specific drug.
+Develop a computational model to predict the three-dimensional structure of a given RNA molecule.
+Design a synthetic antibody to target a specific cancer antigen.
+From a set of phosphoproteomics data, identify the signaling pathways that are dysregulated in a given disease.
+Propose a new vaccine strategy for a specific infectious disease.
+Design a set of experiments to determine the function of a specific orphan G protein-coupled receptor (GPCR).
+From a large dataset of patient-derived xenograft (PDX) models, identify the most appropriate model for testing a new anti-cancer drug.
+Develop a computational model to predict the immunogenicity of a given protein.
+Design a cell-based assay to screen for compounds that can reverse a specific disease phenotype.
+From a set of single-cell ATAC-seq and RNA-seq data, infer the gene regulatory network that controls a specific cell fate decision.
+Propose a new strategy for engineering T cells for cancer immunotherapy.
+Design a set of experiments to determine the mechanism by which a specific environmental toxin causes disease.
+From a large dataset of human genetic variation, identify new genes that are associated with a specific complex trait.
+Develop a computational model to predict the clinical outcome of a patient with a specific type of cancer based on their genomic profile.
+Design a drug delivery system to specifically target a new therapeutic to a given tissue or organ.

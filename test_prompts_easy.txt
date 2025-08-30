@@ -1,0 +1,6 @@
+List the known protein-protein interactions for the human protein p53.
+What is the genomic location of the human CFTR gene?
+Find the SMILES string for ibuprofen.
+What is the role of mitochondria in the cell?
+List three biomarkers for liver damage.
+What is the difference between a virus and a bacterium?
